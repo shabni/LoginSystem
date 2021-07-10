@@ -1,0 +1,43 @@
+<div class="container"  fxLayout="column" fxLayoutAlign="center center">
+
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <mat-label class="heading">Login</mat-label>    
+    </div>
+    
+    <form [formGroup]="theForm" fxLayout="column"  >    
+        <div  fxLayout="row" style="width: 100%;" fxLayoutAlign="space-between center">
+            <div fxLayout="column" class="doubleField">
+                <mat-form-field appearance="outline">
+                    <mat-label>User Name</mat-label>
+                    <input matInput
+                        type=text
+                        name="user_name"
+                        placeholder="Enter User Name"
+                        formControlName="user_name"
+                        required>      
+                </mat-form-field>
+
+              
+            </div>
+
+            <div fxLayout="column" class="doubleField">
+                <mat-form-field appearance="outline" >
+                    <mat-label>Password</mat-label>
+                    <input matInput
+                        type=password
+                        name="password"
+                        placeholder="Enter Password"
+                        formControlName="password"
+                        required>
+                </mat-form-field>
+
+                <mat-error *ngIf="theForm.controls['password'].invalid && (theForm.controls['password'].dirty || theForm.controls['password'].touched)">
+
+                </mat-error>
+            </div>
+        </div>
+    </form>
+    <button mat-raised-button color=primary (click)="validateCredentials()">Save Data</button>
+</div> 
+
+<li *ngFor="let x of data">{{x.id}}         {{x.user_name}}         {{x.password}}</li>
